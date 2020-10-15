@@ -30,7 +30,7 @@ export class Layout extends Component {
             <div className={classes.cover}>
             <Backdrop show={this.state.showSideDrawer} clicked={this.sideDrawerClosedHandler}></Backdrop>
             <div className={classes.open}>
-                <p Style={{float:"right",fontSize:"50px",fontWeight:"500px"}}>ENERGIE</p>
+                <p className={classes.head}>ENERGIE</p>
                 <Sidebar></Sidebar>
                 
             </div>

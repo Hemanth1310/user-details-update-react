@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Input from '../../../components/UI/Input/Input'
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-
+import PasswordStrengthBar from 'react-password-strength-bar';
 import axios from 'axios'
 export class Changepassword extends Component {
 
@@ -15,45 +15,54 @@ export class Changepassword extends Component {
                 elementType: "input",
                 elementConfig:{
                     type:'text',
-                    placeholder:"Enter email"
+                    placeholder:"Enter email",
+                   
                 },
                 value:'',
                 validation:{
                     required:true,
-                    isEmail: true
+                    isEmail: true,
+                   
                 },
                 valid:false,
-                touched:false
+                touched:false,
+                
             },
             Password:{
                 elementType: "input",
                 elementConfig:{
                     type:'password',
-                    placeholder:"Enter new Password"
+                    placeholder:"Enter new Password",
+                    
                 },
                 value:'',
                 validation:{
                     required:true,
                     minLength: 8,
                     maxLength: 12,
+                    
                 },
                 valid:false,
-                touched:false
+                touched:false,
+                passCheck:true
             },
             Repassword:{
                 elementType: "input",
                 elementConfig:{
                     type:'password',
-                    placeholder:"Re-enter new password"
+                    placeholder:"Re-enter new password",
+                    
                 },
                 value:'',
                 validation:{
                     required:true,
                     minLength: 8,
                     maxLength: 12,
+                   
                 },
                 valid:false,
-                touched:false
+                touched:false,
+               
             },},
             formIsValid: false,
             loading: false,
@@ -122,17 +131,18 @@ export class Changepassword extends Component {
         for(let forElementIdentifier in this.state.shareForm){
             formData[forElementIdentifier]= this.state.shareForm[forElementIdentifier]
         }
-
+       
         const post={
             logindetails:{
             email:formData.Email.value,
             password:formData.Password.value
             }
         }
-        if(formData.Password.value===formData.repassword.value){
+        if(formData.Password.value===formData.Repassword.value){
         axios.post(`link here`,post)
             .then(response =>{
                 this.setState({loading:false})
+
                 // this.props.history.push('/')
             })
             .catch(error=>{
@@ -156,9 +166,22 @@ export class Changepassword extends Component {
                 config: this.state.shareForm[key]
             });
         }
+
+        let passStregth
+       
+        if(this.state.shareForm.Password.value.length != 0){
+
+            passStregth=(
+               <PasswordStrengthBar password={this.state.shareForm.Password.value} />  
+           )}
        let form = (
             <form onSubmit={this.sharingHandler}>
-                {formElementsArray.map(formElement => (
+                {formElementsArray.map(formElement => {
+
+                    if(formElement.config.passCheck===true)
+                    {
+                    return(
+                    <div>
                     <Input 
                         key={formElement.id}
                         elementType={formElement.config.elementType}
@@ -168,7 +191,24 @@ export class Changepassword extends Component {
                         shouldValidate={formElement.config.validation}
                         touched={formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
-                ))}
+                      {passStregth}  
+                    </div>)}
+                    else{
+                        return(
+                    <div>
+                    <Input 
+                        key={formElement.id}
+                        elementType={formElement.config.elementType}
+                        elementConfig={formElement.config.elementConfig}
+                        value={formElement.config.value}
+                        invalid={!formElement.config.valid}
+                        shouldValidate={formElement.config.validation}
+                        touched={formElement.config.touched}
+                        changed={(event) => this.inputChangedHandler(event, formElement.id)} />
+                         {/* {passStregth} */}
+                    </div>)
+                    }
+                })}
                 <Button btnType="Success" disabled={!this.state.formIsValid}>Update</Button>
                 <a style={{color:"blue",cursor:"pointer",padding:"10px"}} onClick={this.props.backHandle}>Back</a>
                 
@@ -183,7 +223,7 @@ export class Changepassword extends Component {
             <div>   
                 {fetchedData}
              {form}
-                
+             
              {/* </div> */}
            
             </div>

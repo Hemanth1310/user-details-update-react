@@ -9,6 +9,14 @@
     line-height: 40px;
 }
 
+.head{
+    float:center;
+    font-size:30px;
+    font-weight:bolder;
+
+    color:#478863;
+}
+
 @media (max-width: 1200px) {
     .back {
         background-color:#ffffff;
