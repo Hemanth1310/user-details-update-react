@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-// import * as classes from './Login.module.css'
+
 import Input from '../../../components/UI/Input/Input'
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-// import postback from '../../assets/postback.png'
+
 import axios from 'axios'
 export class Changepassword extends Component {
 
