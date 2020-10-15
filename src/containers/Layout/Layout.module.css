@@ -1,0 +1,38 @@
+.back{
+    background-color:#f3f3f3;
+    min-height: 100vh;
+}
+.side{
+    position: fixed;
+    top:15%;
+    left:10%;
+    line-height: 40px;
+}
+
+@media (max-width: 1200px) {
+    .back {
+        background-color:#ffffff;
+        height: 100%;
+    }
+    .side{
+        display: none;
+        font-size: 25px;
+    }
+    .open{
+        position: relative;
+        /* right: 0%; */
+        font-size: 15px;
+
+        float:right;
+        height: 100%;
+        padding-left: 20px;
+        width:50%;
+        background-color: white;
+        z-index: 200;
+        font-size: 12px;
+        border:1px solid #c1c1c1;
+    line-height: 25px;
+
+
+    }
+}   

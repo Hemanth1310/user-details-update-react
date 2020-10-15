@@ -1,0 +1,36 @@
+
+.frame{
+    /* border: 0.5px solid #c2c2c2; */
+    height:auto;
+    width:100%;
+    text-align: left;
+    /* padding-top:50px; */
+    line-clamp: auto;
+    padding-top:5px;
+    /* float: left; */
+    padding-left: 50px;
+
+}
+.elmt{
+    /* display: inline-block; */
+    /* width: 180px; */
+    /* white-space: nowrap; */
+    /* overflow: hidden !important;
+    text-overflow: ellipsis; */
+    text-align:center;
+}
+
+.button {
+    transition-duration: 0.4s;
+    height: 40px;
+    width: 70px;
+    /* float: 100px; */
+    border-radius: 5px;
+    background-color: none;
+    
+  }
+  
+  .button:hover {
+    background-color: #008CBA; /* Green */
+    color: white;
+  }
