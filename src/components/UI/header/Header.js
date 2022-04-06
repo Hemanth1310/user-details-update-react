@@ -6,7 +6,7 @@ export class Header extends Component {
     render() {
         return (
             <div className={classes.frame}>
-                ENERGIE
+                DemoApp
                 <div className={classes.menu} onClick={this.props.drawerToggleClicked}>
                     {/* <Logo></Logo> */}
                     <img src={logo} alt="menu"></img>
